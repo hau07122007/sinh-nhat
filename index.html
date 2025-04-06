@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Quà Sinh Nhật</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #ffe6f0, #e6f7ff);
+      font-family: 'Segoe UI', cursive;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .start-screen {
+      position: absolute;
+      width: 100%;
+      height: 100vh;
+      background-color: #fff0f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 10;
+    }
+
+    .start-screen h2 {
+      font-size: 32px;
+      color: #ff4d79;
+      margin-bottom: 30px;
+    }
+
+    .start-screen button {
+      padding: 15px 30px;
+      font-size: 20px;
+      background-color: #ff4d79;
+      border: none;
+      border-radius: 12px;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s ease;
+      font-family: 'Segoe UI', cursive;
+    }
+
+    .start-screen button:hover {
+      background-color: #e43e6f;
+      transform: scale(1.05);
+    }
+
+    .main-content {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h1 {
+      color: #ff4081;
+      font-size: 40px;
+      margin-top: 50px;
+      animation: pop 1s ease-out;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .wish {
+      font-size: 22px;
+      color: #333;
+      margin: 30px auto;
+      width: 60%;
+      animation: fadeIn 2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .flowers {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      animation: bloom 3s infinite ease-in-out;
+    }
+
+    @keyframes bloom {
+      0%, 100% { transform: translateX(-50%) scale(1); }
+      50% { transform: translateX(-50%) scale(1.1); }
+    }
+
+    .balloon {
+      position: absolute;
+      bottom: -100px;
+      width: 40px;
+      height: 60px;
+      background-color: #ff4081;
+      border-radius: 50%;
+      animation: floatUp 8s infinite ease-in;
+    }
+
+    @keyframes floatUp {
+      0% { bottom: -100px; opacity: 0; }
+      20% { opacity: 1; }
+      100% { bottom: 110%; opacity: 0; }
+    }
+
+    .balloon::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      width: 2px;
+      height: 20px;
+      background-color: #555;
+      transform: translateX(-50%);
+    }
+
+    .balloon:nth-child(1) { left: 10%; background-color: #ff5e78; animation-delay: 0s; }
+    .balloon:nth-child(2) { left: 30%; background-color: #ffb347; animation-delay: 2s; }
+    .balloon:nth-child(3) { left: 50%; background-color: #7ed6df; animation-delay: 4s; }
+    .balloon:nth-child(4) { left: 70%; background-color: #9b59b6; animation-delay: 1s; }
+    .balloon:nth-child(5) { left: 85%; background-color: #45aaf2; animation-delay: 3s; }
+  </style>
+</head>
+<body>
+
+  <!-- Mở đầu bất ngờ -->
+  <div class="start-screen" id="startScreen">
+    <h2>Nhấn vào để nhận bất ngờ nhé!</h2>
+    <button onclick="showMain()">BẤM VÀO ĐÂY NÈ</button>
+  </div>
+
+  <!-- Nội dung chính -->
+  <div class="main-content" id="mainContent">
+    <h1>Chúc Mừng Sinh Nhật Mỹ Duyên!</h1>
+    <div class="wish">
+      Chúc bạn luôn tươi cười rạng rỡ,  
+      cuộc sống đầy màu sắc như những quả bóng bay này!  
+      <br>Chúc bạn có một sinh nhật thật đặc biệt và ngọt ngào!
+    </div>
+    <img src="https://cdn.pixabay.com/photo/2013/07/13/12/46/flower-160115_1280.png" alt="flowers" class="flowers">
+
+    <!-- Bóng bay -->
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+  </div>
+
+  <!-- Nhạc nền (ẩn lúc đầu) -->
+  <div id="musicPlayer" style="display: none;">
+    <iframe src="https://www.nhaccuatui.com/mh/auto/O27myx6iNcxo" width="0" height="0" frameborder="0" allowfullscreen allow="autoplay"></iframe>
+  </div>
+
+  <script>
+    function showMain() {
+      document.getElementById('startScreen').style.display = 'none';
+      document.getElementById('mainContent').style.display = 'flex';
+      document.getElementById('musicPlayer').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
